@@ -27,7 +27,6 @@ export default function NavLayout({
         display: "flex",
         flexDirection: "column",
         width: "100%",
-        alignItems: "center",
       }} >
         <Toolbar />
         <Suspense>

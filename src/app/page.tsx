@@ -2,7 +2,8 @@
 
 //-----------------------------------------------------------------------------
 // Author: Wayne Cheng
-// Description: Dashboard
+// Description: Dashboard Page
+// Make API request to get dashboard data, store, handle error
 //-----------------------------------------------------------------------------
 
 import { Alert, Box, Button, CircularProgress, Typography } from "@mui/material";
@@ -11,10 +12,9 @@ import { DashboardData } from "@/lib/shared/model";
 import axios from "axios";
 import { useDashboardStore } from "./store/dashboardStore";
 import { useEffect, useState } from "react";
+import Dashboard from "./components/Dashboard";
 
 export default function Home() {
-  const dashboardData: DashboardData | undefined = useDashboardStore(
-    (state) => state.dashboardData);
   const updateDashboardData: (dashboardData_: DashboardData) => void =
     useDashboardStore((state) => state.updateDashboardData);
 
@@ -35,12 +35,13 @@ export default function Home() {
   }, []);
 
   return (
-    <CenterBox>
+    <>
       {viewState === "loading" ? (
         <Box sx={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          m: 2,
         }}>
           <Typography variant="h6" >
             Loading Dashboard Data...
@@ -52,11 +53,9 @@ export default function Home() {
           There was a problem getting dashboard data. Please reload the page.
         </Alert>
       ) : (
-        <>
-          <Typography>Hello</Typography>
-        </>
+        <Dashboard />
       )}
-    </CenterBox>
+    </>
   );
 }
 
@@ -67,7 +66,7 @@ const getDashboardData = async (): Promise<DashboardData | undefined> => {
     const rsp = await axios.post("api/get-dashboard-data",
       { authToken: "abc123" },
     );
-    console.log(rsp.data);
+    // console.log(rsp.data);
     return rsp.data as DashboardData;
   } catch (e: any) {
     console.log(`Cannot get dashboard data: ${e}`);
