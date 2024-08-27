@@ -10,6 +10,7 @@ import { streamifyTheme } from "@/lib/streamifyTheme";
 import { CssBaseline } from "@mui/material";
 import { Suspense } from "react";
 import Background from "./components/Background";
+import NavLayout from "./components/NavLayout";
 
 export const metadata: Metadata = {
   title: "Streamify",
@@ -29,7 +30,9 @@ export default function RootLayout({
             <CssBaseline />
             <Suspense>
               <Background>
-                {children}
+                <NavLayout>
+                  {children}
+                </NavLayout>
               </Background>
             </Suspense>
           </ThemeProvider>
