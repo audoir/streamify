@@ -7,7 +7,7 @@ import { DashboardData } from "@/lib/shared/model";
 import { useDashboardStore } from "../store/dashboardStore";
 import { desktopMaxWidth } from "@/lib/frontEnd/constants";
 import { Grid, Paper, Typography } from "@mui/material";
-import { LineChart } from "@mui/x-charts";
+import { LineChart, PieChart } from "@mui/x-charts";
 
 export default function Charts(props: any) {
 
@@ -21,6 +21,7 @@ export default function Charts(props: any) {
       }}
     >
       <UserGrowthChart />
+      <RevenueDistribution />
     </Grid>
   );
 }
@@ -43,18 +44,55 @@ function UserGrowthChart(props: any) {
         <Typography variant="h6">User Growth Chart</Typography>
         <LineChart
           xAxis={[{
-            data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+            data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+            label: "Month",
+          }]}
+          yAxis={[{
+            label: "Users"
           }]}
           series={[
             {
-              data: dashboardData?.usersPastYear.map((item) => item.total)
+              data: dashboardData?.usersPastYear.map((item) => item.total),
+              label: "Total"
             },
             {
-              data: dashboardData?.usersPastYear.map((item) => item.active)
+              data: dashboardData?.usersPastYear.map((item) => item.active),
+              label: "Active"
             },
           ]}
-          width={500}
           height={300}
+        />
+      </Paper>
+    </Grid>
+  );
+}
+
+function RevenueDistribution(props: any) {
+  const dashboardData: DashboardData | undefined =
+    useDashboardStore((state) => state.dashboardData);
+
+  return (
+    <Grid item xs={12} sm={6}>
+      <Paper
+        elevation={1}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          p: 2,
+          height: "100%",
+        }}
+      >
+        <Typography variant="h6">Revenue Distribution</Typography>
+        <PieChart
+          series={[
+            {
+              data: [
+                { id: 0, value: dashboardData!.revenueDist.subscriptions, label: 'Subscriptions' },
+                { id: 1, value: dashboardData!.revenueDist.ads, label: 'Ads' },
+              ],
+            },
+          ]}
+          height={200}
         />
       </Paper>
     </Grid>

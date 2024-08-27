@@ -10,3 +10,10 @@ const jabber = new Jabber();
 export const createRandomWord = (): string => {
   return jabber.createWord(getRandomInt(5, 10), true);
 };
+
+export function formatDollarAmount(amount: number): string {
+  const amountString = amount.toString();
+  const parts = amountString.split('.');
+  const integerPart = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return '$' + integerPart;
+}

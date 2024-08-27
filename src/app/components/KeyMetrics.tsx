@@ -7,6 +7,7 @@ import { DashboardData } from "@/lib/shared/model";
 import { useDashboardStore } from "../store/dashboardStore";
 import { desktopMaxWidth } from "@/lib/frontEnd/constants";
 import { Grid, Paper, Typography } from "@mui/material";
+import { formatDollarAmount } from "@/lib/shared/utils";
 
 export default function KeyMetrics(props: any) {
   const dashboardData: DashboardData | undefined =
@@ -21,11 +22,11 @@ export default function KeyMetrics(props: any) {
         maxWidth: desktopMaxWidth,
       }}
     >
-      <GridItem title="Total Users" value={dashboardData?.totalUsers} />
-      <GridItem title="Active Users" value={dashboardData?.activeUsers} />
-      <GridItem title="Total Streams" value={dashboardData?.totalStreams} />
-      <GridItem title="Revenue" value={dashboardData?.revenue} />
-      <GridItem title="Top Artist" value={dashboardData?.topArtist} />
+      <GridItem title="Total Users" value={dashboardData!.totalUsers} />
+      <GridItem title="Active Users" value={dashboardData!.activeUsers} />
+      <GridItem title="Total Streams" value={dashboardData!.totalStreams} />
+      <GridItem title="Revenue" value={formatDollarAmount(dashboardData!.revenue)} />
+      <GridItem title="Top Artist" value={dashboardData!.topArtist} />
     </Grid>
   );
 }
