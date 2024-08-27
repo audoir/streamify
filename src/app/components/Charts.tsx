@@ -22,7 +22,7 @@ export default function Charts(props: any) {
     >
       <UserGrowthChart />
       <RevenueDistribution />
-      <TopStreamed />
+      <MostStreamed />
     </Grid>
   );
 }
@@ -100,7 +100,7 @@ function RevenueDistribution(props: any) {
   );
 }
 
-function TopStreamed(props: any) {
+function MostStreamed(props: any) {
   const dashboardData: DashboardData | undefined =
     useDashboardStore((state) => state.dashboardData);
 
