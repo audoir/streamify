@@ -1,14 +1,20 @@
 "use client";
 
-//-----------------------------------------------------------------------------
-// Author: Wayne Cheng
-// Description: Main page
-//-----------------------------------------------------------------------------
-
-import { Box, Typography } from "@mui/material";
+import { Button } from "@mui/material";
+import CenterBox from "./components/CenterBox";
 
 export default function Home() {
+  const onClick = async () => {
+    console.log(`Click clack`);
+  };
+
   return (
-    <Box><Typography>hello world</Typography></Box>
+    <CenterBox>
+      <>
+        <Button variant="contained" onClick={onClick}>
+          API Call
+        </Button>
+      </>
+    </CenterBox>
   );
 }
