@@ -7,8 +7,12 @@ import { AppBar, Toolbar, Typography } from "@mui/material";
 import { Menu as MenuIcon } from "@mui/icons-material";
 import { drawerWidth } from "@/lib/frontEnd/constants";
 import { StyledIconButton } from "@/lib/frontEnd/streamifyTheme";
+import { useDashboardStore } from "../store/dashboardStore";
 
 export default function NavAppBar() {
+  const toggleDrawer: () => void = useDashboardStore(
+    (state) => state.toggleDrawer);
+
   return (
     <AppBar
       position="fixed"
@@ -23,8 +27,8 @@ export default function NavAppBar() {
           sx={{
             mr: 2,
             display: { xs: "flex", sm: "flex", md: 'none' }
-          }
-          }
+          }}
+          onClick={toggleDrawer}
         >
           <MenuIcon />
         </StyledIconButton>

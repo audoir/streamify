@@ -6,8 +6,13 @@
 import { Avatar, Box, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Theme, Toolbar, Typography, useTheme } from "@mui/material";
 import { Dashboard } from "@mui/icons-material";
 import { drawerWidth } from "@/lib/frontEnd/constants";
+import { useDashboardStore } from "../store/dashboardStore";
 
 export default function NavDrawer() {
+  const drawerOpen: boolean = useDashboardStore((state) => state.drawerOpen);
+  const toggleDrawer: () => void = useDashboardStore(
+    (state) => state.toggleDrawer);
+
   return (
     <Box
       component="nav"
@@ -19,7 +24,8 @@ export default function NavDrawer() {
     >
       <Drawer
         variant="temporary"
-        open={true}
+        open={drawerOpen}
+        onClose={toggleDrawer}
         ModalProps={{
           keepMounted: true, // Better open performance on mobile.
         }}
