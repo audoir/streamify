@@ -5,8 +5,8 @@
 
 import { AppBar, Toolbar, Typography } from "@mui/material";
 import { Menu as MenuIcon } from "@mui/icons-material";
-import { drawerWidth } from "@/lib/constants";
-import { StyledIconButton } from "@/lib/streamifyTheme";
+import { drawerWidth } from "@/lib/frontEnd/constants";
+import { StyledIconButton } from "@/lib/frontEnd/streamifyTheme";
 
 export default function NavAppBar() {
   return (

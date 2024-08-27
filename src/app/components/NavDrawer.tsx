@@ -5,7 +5,7 @@
 
 import { Avatar, Box, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Theme, Toolbar, Typography, useTheme } from "@mui/material";
 import { Dashboard } from "@mui/icons-material";
-import { drawerWidth } from "@/lib/constants";
+import { drawerWidth } from "@/lib/frontEnd/constants";
 
 export default function NavDrawer() {
   return (

@@ -6,7 +6,7 @@
 import type { Metadata } from "next";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import { ThemeProvider } from '@mui/material/styles';
-import { streamifyTheme } from "@/lib/streamifyTheme";
+import { streamifyTheme } from "@/lib/frontEnd/streamifyTheme";
 import { CssBaseline } from "@mui/material";
 import { Suspense } from "react";
 import Background from "./components/Background";

@@ -1,4 +1,4 @@
-import { desktopCenterMaxWidth } from "@/lib/constants";
+import { desktopCenterMaxWidth } from "@/lib/frontEnd/constants";
 import { Box } from "@mui/material";
 
 export default function CenterBox({
