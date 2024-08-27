@@ -21,7 +21,7 @@ export interface RevenueDist {
 }
 
 export interface TopSong {
-  songId: string
+  songName: string
   streamCount: number
 }
 

@@ -38,9 +38,9 @@ export async function POST(request: NextRequest) {
     });
   }
   const topStreamedSongs: TopSong[] = [];
-  for (let i = 0; i < 12; i += 1) {
+  for (let i = 0; i < 5; i += 1) {
     topStreamedSongs.push({
-      songId: randomUUID(),
+      songName: createRandomWord(),
       streamCount: getRandomInt(100, 500),
     });
   }

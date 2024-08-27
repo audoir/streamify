@@ -7,7 +7,7 @@ import { DashboardData } from "@/lib/shared/model";
 import { useDashboardStore } from "../store/dashboardStore";
 import { desktopMaxWidth } from "@/lib/frontEnd/constants";
 import { Grid, Paper, Typography } from "@mui/material";
-import { LineChart, PieChart } from "@mui/x-charts";
+import { LineChart, PieChart, BarChart } from "@mui/x-charts";
 
 export default function Charts(props: any) {
 
@@ -22,6 +22,7 @@ export default function Charts(props: any) {
     >
       <UserGrowthChart />
       <RevenueDistribution />
+      <TopStreamed />
     </Grid>
   );
 }
@@ -93,6 +94,32 @@ function RevenueDistribution(props: any) {
             },
           ]}
           height={200}
+        />
+      </Paper>
+    </Grid>
+  );
+}
+
+function TopStreamed(props: any) {
+  const dashboardData: DashboardData | undefined =
+    useDashboardStore((state) => state.dashboardData);
+
+  return (
+    <Grid item xs={12} sm={6}>
+      <Paper
+        elevation={1}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          p: 2,
+          height: "100%",
+        }}
+      >
+        <Typography variant="h6">Top 5 Streamed Songs</Typography>
+        <BarChart
+          xAxis={[{ scaleType: 'band', data: dashboardData?.topStreamedSongs.map((item) => item.songName) }]}
+          series={[{ data: dashboardData?.topStreamedSongs.map((item) => item.streamCount) }]}
+          height={300}
         />
       </Paper>
     </Grid>
