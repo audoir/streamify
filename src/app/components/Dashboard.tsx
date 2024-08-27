@@ -7,6 +7,7 @@
 import { Box, Typography } from "@mui/material";
 import KeyMetrics from "./KeyMetrics";
 import Charts from "./Charts";
+import DataTable from "./DataTable";
 
 export default function Dashboard(props: any) {
   return (
@@ -22,6 +23,10 @@ export default function Dashboard(props: any) {
         Charts
       </Typography>
       <Charts />
+      <Typography variant="h6" sx={{ m: 2 }}>
+        Data Table
+      </Typography>
+      <DataTable />
     </Box>
   );
 }

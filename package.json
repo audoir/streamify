@@ -17,6 +17,7 @@
     "@mui/material": "^5.15.10",
     "@mui/material-nextjs": "^5.15.9",
     "@mui/x-charts": "^7.14.0",
+    "@mui/x-data-grid": "^7.14.0",
     "axios": "^1.7.5",
     "jabber": "^1.5.3",
     "next": "14.2.7",

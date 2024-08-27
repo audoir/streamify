@@ -47,9 +47,10 @@ export async function POST(request: NextRequest) {
   const recentStreams: Stream[] = [];
   for (let i = 0; i < 20; i += 1) {
     recentStreams.push({
+      id: randomUUID(),
       songName: createRandomWord(),
       artist: createRandomWord(),
-      timestamp: getUtcMinusRandomMinus5Days(),
+      date: getDateMinusRandomMinus5Days(),
       streamCount: getRandomInt(1, 5),
       userId: randomUUID(),
     });
@@ -72,9 +73,9 @@ export async function POST(request: NextRequest) {
   });
 }
 
-function getUtcMinusRandomMinus5Days(): number {
+function getDateMinusRandomMinus5Days(): string {
   const randomDays = Math.floor(Math.random() * 6);
   const now = Date.now();
   const millisecondsToSubtract = (randomDays + 5) * 24 * 60 * 60 * 1000;
-  return now - millisecondsToSubtract;
+  return new Date(now - millisecondsToSubtract).toISOString().slice(0, 10);
 }

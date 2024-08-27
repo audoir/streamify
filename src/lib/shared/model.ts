@@ -26,9 +26,10 @@ export interface TopSong {
 }
 
 export interface Stream {
+  id: string
   songName: string
   artist: string
-  timestamp: number
+  date: string
   streamCount: number
   userId: string
 }

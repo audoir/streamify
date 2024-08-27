@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------
 // Author: Wayne Cheng
-// Description: Key Metrics
+// Description: Charts
 //-----------------------------------------------------------------------------
 
 import { DashboardData } from "@/lib/shared/model";
