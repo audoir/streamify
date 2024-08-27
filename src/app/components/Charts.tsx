@@ -7,10 +7,9 @@ import { DashboardData } from "@/lib/shared/model";
 import { useDashboardStore } from "../store/dashboardStore";
 import { desktopMaxWidth } from "@/lib/frontEnd/constants";
 import { Grid, Paper, Typography } from "@mui/material";
+import { LineChart } from "@mui/x-charts";
 
-export default function KeyMetrics(props: any) {
-  const dashboardData: DashboardData | undefined =
-    useDashboardStore((state) => state.dashboardData);
+export default function Charts(props: any) {
 
   return (
     <Grid
@@ -21,18 +20,17 @@ export default function KeyMetrics(props: any) {
         maxWidth: desktopMaxWidth,
       }}
     >
-      <GridItem title="Total Users" value={dashboardData?.totalUsers} />
-      <GridItem title="Active Users" value={dashboardData?.activeUsers} />
-      <GridItem title="Total Streams" value={dashboardData?.totalStreams} />
-      <GridItem title="Revenue" value={dashboardData?.revenue} />
-      <GridItem title="Top Artist" value={dashboardData?.topArtist} />
+      <UserGrowthChart />
     </Grid>
   );
 }
 
-function GridItem(props: any) {
+function UserGrowthChart(props: any) {
+  const dashboardData: DashboardData | undefined =
+    useDashboardStore((state) => state.dashboardData);
+
   return (
-    <Grid item xs={12} sm={4}>
+    <Grid item xs={12} sm={6}>
       <Paper
         elevation={1}
         sx={{
@@ -42,8 +40,22 @@ function GridItem(props: any) {
           height: "100%",
         }}
       >
-        <Typography variant="h6">{props.title}</Typography>
-        <Typography variant="h5">{props.value}</Typography>
+        <Typography variant="h6">User Growth Chart</Typography>
+        <LineChart
+          xAxis={[{
+            data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+          }]}
+          series={[
+            {
+              data: dashboardData?.usersPastYear.map((item) => item.total)
+            },
+            {
+              data: dashboardData?.usersPastYear.map((item) => item.active)
+            },
+          ]}
+          width={500}
+          height={300}
+        />
       </Paper>
     </Grid>
   );
