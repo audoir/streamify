@@ -6,13 +6,12 @@
 // Make API request to get dashboard data, store, handle error
 //-----------------------------------------------------------------------------
 
-import { Alert, Box, Button, CircularProgress, Typography } from "@mui/material";
-import CenterBox from "./components/CenterBox";
+import { Alert, Box, CircularProgress, Typography } from "@mui/material";
 import { DashboardData } from "@/lib/shared/model";
-import axios from "axios";
 import { useDashboardStore } from "./store/dashboardStore";
 import { useEffect, useState } from "react";
 import Dashboard from "./components/Dashboard";
+import { getDashboardData } from "@/lib/frontEnd/getDashboardData";
 
 export default function Home() {
   const updateDashboardData: (dashboardData_: DashboardData) => void =
@@ -60,15 +59,3 @@ export default function Home() {
 }
 
 type ViewStates = "default" | "loading" | "error";
-
-const getDashboardData = async (): Promise<DashboardData | undefined> => {
-  try {
-    const rsp = await axios.post("api/get-dashboard-data",
-      { authToken: "abc123" },
-    );
-    // console.log(rsp.data);
-    return rsp.data as DashboardData;
-  } catch (e: any) {
-    console.log(`Cannot get dashboard data: ${e}`);
-  }
-}

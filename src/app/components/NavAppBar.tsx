@@ -3,15 +3,34 @@
 // Description: App bar
 //-----------------------------------------------------------------------------
 
-import { AppBar, Toolbar, Typography } from "@mui/material";
-import { Menu as MenuIcon } from "@mui/icons-material";
+import { AppBar, Box, CircularProgress, Toolbar, Typography } from "@mui/material";
+import { Menu as MenuIcon, Refresh } from "@mui/icons-material";
 import { drawerWidth } from "@/lib/frontEnd/constants";
 import { StyledIconButton } from "@/lib/frontEnd/streamifyTheme";
 import { useDashboardStore } from "../store/dashboardStore";
+import { useState } from "react";
+import { DashboardData } from "@/lib/shared/model";
+import { getDashboardData } from "@/lib/frontEnd/getDashboardData";
 
 export default function NavAppBar() {
   const toggleDrawer: () => void = useDashboardStore(
     (state) => state.toggleDrawer);
+  const updateDashboardData: (dashboardData_: DashboardData) => void =
+    useDashboardStore((state) => state.updateDashboardData);
+
+  const [viewState, setViewState] = useState<ViewStates>("default");
+
+  const handleRefreshEvent = async () => {
+    setViewState("loading");
+    const dashboardData_: DashboardData | undefined =
+      await getDashboardData();
+    if (dashboardData_ !== undefined) {
+      updateDashboardData(dashboardData_);
+      setViewState("default");
+    } else {
+      setViewState("error");
+    }
+  }
 
   return (
     <AppBar
@@ -41,7 +60,19 @@ export default function NavAppBar() {
         >
           Streamify Analytics Dashboard
         </Typography>
+        <Box>
+          <StyledIconButton
+            onClick={handleRefreshEvent}
+            disabled={viewState === "loading"}
+          >
+            {viewState === "loading" ?
+              <CircularProgress size={24} /> :
+              <Refresh />}
+          </StyledIconButton>
+        </Box>
       </Toolbar>
     </AppBar>
   );
 }
+
+type ViewStates = "default" | "loading" | "error";

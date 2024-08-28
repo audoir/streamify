@@ -6,7 +6,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Or go to [https://main.d1xxgqedw9nzyo.amplifyapp.com/]
+To see the deployed application, go to [https://main.d1xxgqedw9nzyo.amplifyapp.com/]
 
 ## Development Notes
 
