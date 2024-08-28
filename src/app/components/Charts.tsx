@@ -46,7 +46,7 @@ function UserGrowthChart(props: any) {
         <LineChart
           xAxis={[{
             data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-            label: "Month",
+            label: "Past Months",
           }]}
           yAxis={[{
             label: "Users"

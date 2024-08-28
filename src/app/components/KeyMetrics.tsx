@@ -22,9 +22,9 @@ export default function KeyMetrics(props: any) {
         maxWidth: desktopMaxWidth,
       }}
     >
-      <GridItem title="Total Users" value={dashboardData!.totalUsers} />
-      <GridItem title="Active Users" value={dashboardData!.activeUsers} />
-      <GridItem title="Total Streams" value={dashboardData!.totalStreams} />
+      <GridItem title="Total Users" value={dashboardData!.totalUsers.toLocaleString('en-US')} />
+      <GridItem title="Active Users" value={dashboardData!.activeUsers.toLocaleString('en-US')} />
+      <GridItem title="Total Streams" value={dashboardData!.totalStreams.toLocaleString('en-US')} />
       <GridItem title="Revenue" value={formatDollarAmount(dashboardData!.revenue)} />
       <GridItem title="Top Artist" value={dashboardData!.topArtist} />
     </Grid>
