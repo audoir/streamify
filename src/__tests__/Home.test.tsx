@@ -1,3 +1,8 @@
+//-----------------------------------------------------------------------------
+// Author: Wayne Cheng
+// Description: Test for main page
+//-----------------------------------------------------------------------------
+
 import Home from '@/app/page';
 import { render, screen } from '@testing-library/react';
 

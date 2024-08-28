@@ -1,3 +1,8 @@
+//-----------------------------------------------------------------------------
+// Author: Wayne Cheng
+// Description: Test for navigation
+//-----------------------------------------------------------------------------
+
 import { render, screen } from '@testing-library/react';
 import NavAppBar from '@/app/components/NavAppBar';
 

@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------
 // Author: Wayne Cheng
-// Description: Get dashboard data
+// Description: API route that returns random dashboard data
 //-----------------------------------------------------------------------------
 
 import { DashboardData, RevenueDist, Stream, TopSong, UserMonth } from "@/lib/shared/model";

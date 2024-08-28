@@ -1,3 +1,8 @@
+//-----------------------------------------------------------------------------
+// Author: Wayne Cheng
+// Description: Data schema
+//-----------------------------------------------------------------------------
+
 export interface DashboardData {
   totalUsers: number
   activeUsers: number

@@ -1,3 +1,8 @@
+//-----------------------------------------------------------------------------
+// Author: Wayne Cheng
+// Description: Miscellaneous utils used throughout project
+//-----------------------------------------------------------------------------
+
 import Jabber from "jabber";
 
 export function getRandomInt(min: number, max: number): number {

@@ -39,10 +39,3 @@ export const StyledIconButton = styled(IconButton)(({ theme }) => ({
     backgroundColor: theme.palette.primary.dark,
   },
 }));
-
-export const StyledSelect = styled(Select)(({ theme }) => ({
-  color: theme.palette.primary.main,
-  '& .MuiOutlinedInput-notchedOutline': {
-    borderColor: theme.palette.primary.main
-  },
-}));

@@ -1,3 +1,8 @@
+//-----------------------------------------------------------------------------
+// Author: Wayne Cheng
+// Description: Makes API request to get dashboard data
+//-----------------------------------------------------------------------------
+
 import axios from "axios";
 import { DashboardData } from "../shared/model";
 
